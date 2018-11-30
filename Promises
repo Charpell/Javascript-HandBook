@@ -1,0 +1,21 @@
+Using callbacks
+
+setTimeout(function() {
+  console.log('I promised to run after 1s')
+  setTimeout(function() {
+    console.log('I promised to run after 2s')
+  }, 1000)
+}, 1000)
+
+
+By using promises you can rewrite this code
+
+const waiting = () => new Promise((resolve, reject) => {
+	setTimeout(resolve, 2000)
+})
+
+waiting().then(() => {
+	console.log('I promised to run after 1s')
+	return waiting()
+})
+.then(() => console.log('I promised to run after 2s'))
