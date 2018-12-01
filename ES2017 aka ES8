@@ -1,0 +1,66 @@
+Destructure String with spread operator
+
+const hey = "I am coming"
+const cc = [...hey]
+console.log(cc)
+
+
+
+
+- String padding
+- Object values
+- Object entries
+- Object getOwnProperty
+- Trailing commas in function parameter list and calls
+- Async functions
+- Shared memory and atomics
+
+
+String Padding
+padStart(targetLength [, padString])
+padEnd(targetLength [, padString])
+
+'test'.padStart(4) => 'test'
+'test'.padStart(5) => ' test'
+'test'.padStart(8) => '        test'
+'test'.padStart(8, 'abcd) => 'abcdtest'
+
+
+
+Object.values()
+const person = { name: 'Fred', age: 87 }
+Object.values(person)
+
+
+Object.entries()
+This method returns an array containing all the object own properties, as an array of [key, value] pairs
+const person = { name: 'Fred', age: 87 }
+Object.entries(person)
+
+Also works with arrays
+const person = ['Fred', 'Tony']
+Object.entries(person)
+
+
+getOwnPropertyDescriptors()
+This method returns all own (non-inherited) properties descriptors of an object.
+
+Example
+const person1 = {
+  set name(newName) {
+    console.log(newName)
+  }
+}
+
+This will not work
+const person2 = {}
+Object.assign(person2, person1)
+
+But this will work
+const person3 = {}
+Object.defineProperties(person3, Object.getOwnPropertyDescriptors(person1))
+
+person1.name = 'x'
+person2.name = 'x' // person2 misses the setter
+person3.name = 'x'
+
