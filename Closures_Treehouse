@@ -1,0 +1,16 @@
+function makeCounter(noun) {
+	var count = 0;
+	
+	return function() {
+		count += 1;
+		return count + ' ' + noun
+    }
+} 
+
+var bird1 = makeCounter("birds")
+var bird2 = makeCounter("birds")
+
+bird1()
+bird2()
+
+var dog1 = makeCounter("dogs")
